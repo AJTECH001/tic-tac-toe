@@ -37,12 +37,22 @@ tic-tac-toe/
 - `get-game(game-id: uint)` - Get game details by ID
 - `get-latest-game-id()` - Get the ID for the next game to be created
 
+## 🚀 Deployment Status
+
+**✅ LIVE ON TESTNET!**
+
+- **Contract Address**: `ST1PEM6ATK66PP1DC6FWMRVWNKR8MWRWD90GAAJQE.tic-tac-toe`
+- **Transaction ID**: `55633bcb49ab179dfca427983704ce595437b8b684983bb6a30be03342e7f9b8`
+- **Explorer**: https://explorer.stacks.co/txid/55633bcb49ab179dfca427983704ce595437b8b684983bb6a30be03342e7f9b8?chain=testnet
+- **Deployment Cost**: 0.088460 STX
+- **Status**: ✅ Confirmed on Testnet
+
 ## Getting Started
 
 ### Prerequisites
 - Node.js 18+
-- Clarinet 2.11.2+
-- A Stacks wallet with testnet STX
+- Clarinet 3.7.0+
+- A Stacks wallet with testnet STX (get from [faucet](https://explorer.stacks.co/sandbox/faucet?chain=testnet))
 
 ### Smart Contract Setup
 
@@ -59,7 +69,8 @@ npm test
 3. Deploy to testnet:
 ```bash
 # Update settings/Testnet.toml with your wallet mnemonic
-clarinet deployments apply --testnet
+clarinet deployments generate --testnet --medium-cost
+clarinet deployments apply --testnet --no-dashboard
 ```
 
 ### Frontend Setup
@@ -74,15 +85,39 @@ cd frontend
 npm install
 ```
 
-3. Update contract address in `lib/contract.ts`:
+3. Contract address is already configured for the deployed contract:
 ```typescript
-const CONTRACT_ADDRESS = "YOUR_DEPLOYED_CONTRACT_ADDRESS";
+const CONTRACT_ADDRESS = "ST1PEM6ATK66PP1DC6FWMRVWNKR8MWRWD90GAAJQE";
 ```
 
 4. Start development server:
 ```bash
 npm run dev
 ```
+
+5. Open http://localhost:3000 in your browser
+
+## 🎮 Testing the Deployed Contract
+
+You can test the deployed contract in several ways:
+
+### 1. Using the Frontend (Recommended)
+1. Start the frontend: `cd frontend && npm run dev`
+2. Open http://localhost:3000
+3. Connect your Hiro Wallet (make sure it's in testnet mode)
+4. Create and play games!
+
+### 2. Using Clarinet Console
+```bash
+clarinet console
+# Then interact with the contract:
+(contract-call? .tic-tac-toe get-latest-game-id)
+(contract-call? .tic-tac-toe get-game u0)
+```
+
+### 3. Using Stacks Explorer
+- View contract: https://explorer.stacks.co/txid/55633bcb49ab179dfca427983704ce595437b8b684983bb6a30be03342e7f9b8?chain=testnet
+- Monitor transactions and game state
 
 ## How to Play
 
@@ -118,8 +153,4 @@ This basic implementation could be enhanced with:
 - **Tailwind CSS**: Styling
 - **Stacks.js**: Blockchain interaction
 
-## License
 
-MIT
-# tic-tac-toe
-# tic-tac-toe

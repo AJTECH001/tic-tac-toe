@@ -12,7 +12,7 @@ import {
 } from "@stacks/transactions";
 
 // REPLACE THESE WITH YOUR OWN
-const CONTRACT_ADDRESS = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"; // Placeholder address
+const CONTRACT_ADDRESS = "ST1PEM6ATK66PP1DC6FWMRVWNKR8MWRWD90GAAJQE"; // Your testnet address
 const CONTRACT_NAME = "tic-tac-toe";
 
 type GameCV = {
